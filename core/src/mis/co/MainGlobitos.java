@@ -12,11 +12,13 @@ import java.util.List;
 public class MainGlobitos extends ApplicationAdapter {
 	SpriteBatch batch;
 	Player anuel;
+	Comprobador comprobador;
 	List<Bot> bots = new ArrayList<>();
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		comprobador = new Comprobador();
 		anuel = new Player(
 				Input.Keys.W,
 				Input.Keys.S,
@@ -35,6 +37,10 @@ public class MainGlobitos extends ApplicationAdapter {
 	void update(){
 		// bots.forEach(bot -> bot.mover());
 		anuel.mover();
+
+
+		bots.removeIf(bot -> comprobador.comprobarChoque(anuel, bot));
+
 	}
 
 

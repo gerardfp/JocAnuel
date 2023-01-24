@@ -8,6 +8,7 @@ public class Player {
     int u,d,l,r;
     Texture img;
     int posX, posY;
+    int width = 40, height = 40;
 
 
     public Player(int u, int d, int l, int r, Texture img, int posX, int posY) {
@@ -36,6 +37,6 @@ public class Player {
     }
 
     void render(SpriteBatch batch){
-        batch.draw(img, posX, posY, 40, 40);
+        batch.draw(img, posX, posY, width, height);
     }
 }
