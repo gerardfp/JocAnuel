@@ -10,7 +10,7 @@ public class Bot {
     Random random = new Random();
 
     float posX, posY;
-    float velX = 2;
+    float velX = 1;
     float accX = 0.05f;
     int width = 20;
     int height = 20;
@@ -23,8 +23,11 @@ public class Bot {
 
 
     void mover(){
-        if (random.nextInt(200) == 0) {
+        if (random.nextInt(100) == 0) {
             velX = velX * -1;
+        }
+        if (random.nextInt(100) == 0) {
+            accX = accX * -1;
         }
 
         posX = posX + velX;

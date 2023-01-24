@@ -6,31 +6,47 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainGlobitos extends ApplicationAdapter {
 	SpriteBatch batch;
-
-	Bot bot;
 	Player anuel;
-
+	List<Bot> bots = new ArrayList<>();
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		anuel = new Player(
+				Input.Keys.W,
+				Input.Keys.S,
+				Input.Keys.A,
+				Input.Keys.D,
+				new Texture("sprite.png"),
+				100,
+				100);
 
-		anuel = new Player(Input.Keys.D, new Texture("sprite.png"));
-
-		bot = new Bot(100, 100, new Texture("badlogic.jpg"));
+		for (int i = 0; i < 5; i++) {
+			bots.add(new Bot(i*100, i*100, new Texture("badlogic.jpg")));
+		}
 	}
+
+
+	void update(){
+		// bots.forEach(bot -> bot.mover());
+		anuel.mover();
+	}
+
 
 	@Override
 	public void render () {
-
-		bot.mover();
+		update();
 
 
 		ScreenUtils.clear(1, 1, 1, 1);
 		batch.begin();
-		bot.render(batch);
+		anuel.render(batch);
+		bots.forEach(bot -> bot.render(batch));
 		batch.end();
 	}
 }
