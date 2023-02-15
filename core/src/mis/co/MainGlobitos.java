@@ -40,7 +40,6 @@ public class MainGlobitos extends ApplicationAdapter {
 
 
 		bots.removeIf(bot -> comprobador.comprobarChoque(anuel, bot));
-
 	}
 
 
